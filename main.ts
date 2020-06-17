@@ -1,22 +1,32 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    if (じゃんけん == 1 && receivedNumber == 1) {
-        radio.sendString("あいこ")
-    } else if (じゃんけん == 2 && receivedNumber == 1) {
-        radio.sendString("かち")
-    } else if (じゃんけん == 3 && receivedNumber == 1) {
-        radio.sendString("まけ")
-    } else if (じゃんけん == 1 && receivedNumber == 2) {
-        radio.sendString("まけ")
-    } else if (じゃんけん == 2 && receivedNumber == 2) {
-        radio.sendString("あいこ")
-    } else if (じゃんけん == 3 && receivedNumber == 2) {
-        radio.sendString("かち")
-    } else if (じゃんけん == 1 && receivedNumber == 3) {
-        radio.sendString("かち")
-    } else if (じゃんけん == 2 && receivedNumber == 3) {
-        radio.sendString("まけ")
-    } else if (じゃんけん == 3 && receivedNumber == 3) {
-        radio.sendString("あいこ")
+    if (じゃんけん == 1 && receivedNumber == 2 && receivedNumber == 3) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            # # # # #
+            . . . . .
+            . . . . .
+            `)
+    } else if (じゃんけん == 2 && receivedNumber == 1 && receivedNumber == 3) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            # # # # #
+            . . . . .
+            . . . . .
+            `)
+    } else if (じゃんけん == 3 && receivedNumber == 2 && receivedNumber == 1) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            # # # # #
+            . . . . .
+            . . . . .
+            `)
+    } else if (じゃんけん == 1 && receivedNumber == 1 && receivedNumber == 2) {
+    	
+    } else {
+    	
     }
 })
 input.onButtonPressed(Button.A, function () {
@@ -42,15 +52,7 @@ input.onButtonPressed(Button.AB, function () {
     じゃんけん = 3
 })
 radio.onReceivedString(function (receivedString) {
-    if (receivedString == "かち") {
-        basic.showLeds(`
-            . # # # .
-            # . . . #
-            # . . . #
-            # . . . #
-            . # # # .
-            `)
-    } else if (receivedString == "あいこ") {
+    if (じゃんけん == receivedString) {
         basic.showLeds(`
             . . . . .
             . . . . .
@@ -58,7 +60,31 @@ radio.onReceivedString(function (receivedString) {
             . . . . .
             . . . . .
             `)
-    } else if (receivedString == "まけ") {
+    } else if (じゃんけん == 1 && receivedString == 2) {
+        basic.showLeds(`
+            . # # # .
+            # . . . #
+            # . . . #
+            # . . . #
+            . # # # .
+            `)
+    } else if (じゃんけん == 2 && receivedString == 3) {
+        basic.showLeds(`
+            . # # # .
+            # . . . #
+            # . . . #
+            # . . . #
+            . # # # .
+            `)
+    } else if (じゃんけん == 3 && receivedString == 1) {
+        basic.showLeds(`
+            . # # # .
+            # . . . #
+            # . . . #
+            # . . . #
+            . # # # .
+            `)
+    } else {
         basic.showLeds(`
             # . . . #
             . # . # .
@@ -79,5 +105,5 @@ input.onButtonPressed(Button.B, function () {
     radio.sendNumber(2)
     じゃんけん = 2
 })
-let じゃんけん = 0
+let じゃんけん = ""
 radio.setGroup(10)
