@@ -24,7 +24,13 @@ radio.onReceivedNumber(function (receivedNumber) {
             . . . . .
             `)
     } else if (じゃんけん == 1 && receivedNumber == 1 && receivedNumber == 2) {
-    	
+        basic.showLeds(`
+            . # # # .
+            # . . . #
+            # . . . #
+            # . . . #
+            . # # # .
+            `)
     } else {
     	
     }
